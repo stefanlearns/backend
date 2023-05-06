@@ -3,6 +3,8 @@
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { Controller, ValidationService, FieldErrors, ValidateError, TsoaRoute, HttpStatusCodeLiteral, TsoaResponse, fetchMiddlewares } from '@tsoa/runtime';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { OblastController } from './../../routes/oblast/OblastController';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { SalesController } from './../../routes/sales/SalesController';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { UserController } from './../../routes/users/UserController';
@@ -12,6 +14,15 @@ import * as express from 'express';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 
 const models: TsoaRoute.Models = {
+    "Oblast": {
+        "dataType": "refObject",
+        "properties": {
+            "idOblasti": {"dataType":"double","required":true},
+            "nazivOblasti": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Sale": {
         "dataType": "refObject",
         "properties": {
@@ -38,7 +49,7 @@ const models: TsoaRoute.Models = {
             "lozinka": {"dataType":"string","required":true},
             "ime": {"dataType":"string","required":true},
             "prezime": {"dataType":"string","required":true},
-            "datumRodjenja": {"dataType":"datetime","required":true},
+            "datumRodjenja": {"dataType":"string","required":true},
             "mailRukovodioca": {"dataType":"string","required":true},
             "telefon": {"dataType":"string","required":true},
             "pregledPodnetih": {"dataType":"string","required":true},
@@ -57,6 +68,105 @@ export function RegisterRoutes(app: express.Router) {
     //  NOTE: If you do not see routes for all of your controllers in this file, then you might not have informed tsoa of where to look
     //      Please look into the "controllerPathGlobs" config option described in the readme: https://github.com/lukeautry/tsoa
     // ###########################################################################################################
+        app.get('/oblast/getAllOblast',
+            ...(fetchMiddlewares<RequestHandler>(OblastController)),
+            ...(fetchMiddlewares<RequestHandler>(OblastController.prototype.getAllOblast)),
+
+            function OblastController_getAllOblast(request: any, response: any, next: any) {
+            const args = {
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new OblastController();
+
+
+              const promise = controller.getAllOblast.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.post('/oblast',
+            ...(fetchMiddlewares<RequestHandler>(OblastController)),
+            ...(fetchMiddlewares<RequestHandler>(OblastController.prototype.insertOblast)),
+
+            function OblastController_insertOblast(request: any, response: any, next: any) {
+            const args = {
+                    oblast: {"in":"body","name":"oblast","required":true,"ref":"Oblast"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new OblastController();
+
+
+              const promise = controller.insertOblast.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.put('/oblast/editOblast',
+            ...(fetchMiddlewares<RequestHandler>(OblastController)),
+            ...(fetchMiddlewares<RequestHandler>(OblastController.prototype.editOblast)),
+
+            function OblastController_editOblast(request: any, response: any, next: any) {
+            const args = {
+                    oblast: {"in":"body","name":"oblast","required":true,"ref":"Oblast"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new OblastController();
+
+
+              const promise = controller.editOblast.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.delete('/oblast/deleteOblast/:idOblasti',
+            ...(fetchMiddlewares<RequestHandler>(OblastController)),
+            ...(fetchMiddlewares<RequestHandler>(OblastController.prototype.deleteBook)),
+
+            function OblastController_deleteBook(request: any, response: any, next: any) {
+            const args = {
+                    idOblasti: {"in":"path","name":"idOblasti","required":true,"dataType":"double"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new OblastController();
+
+
+              const promise = controller.deleteBook.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
         app.get('/sales/getAllSales',
             ...(fetchMiddlewares<RequestHandler>(SalesController)),
             ...(fetchMiddlewares<RequestHandler>(SalesController.prototype.getAllSales)),
@@ -100,6 +210,31 @@ export function RegisterRoutes(app: express.Router) {
 
 
               const promise = controller.login.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.post('/users/register',
+            ...(fetchMiddlewares<RequestHandler>(UserController)),
+            ...(fetchMiddlewares<RequestHandler>(UserController.prototype.register)),
+
+            function UserController_register(request: any, response: any, next: any) {
+            const args = {
+                    user: {"in":"body","name":"user","required":true,"ref":"User"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new UserController();
+
+
+              const promise = controller.register.apply(controller, validatedArgs as any);
               promiseHandler(controller, promise, response, undefined, next);
             } catch (err) {
                 return next(err);

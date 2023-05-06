@@ -13,10 +13,10 @@ export class UserController extends Controller{
     // uzmem iz bodija parametre, zovem DAO i pokusam login 
 
 
-    //@Post("register")
-    //async register(@Body() user: User){
-    //    return await userDAO.register(user);
-    //}
+    @Post("register")
+    async register(@Body() user: User){
+        return await userDAO.register(user);
+    }
 
     @Get("getAllUsers")
     async getAllUsers() {

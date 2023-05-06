@@ -4,10 +4,10 @@ import { User } from "./User";
 class UserDAO{
 
 
-    async login(username: string, password: string): Promise<User | null>{
+    async login(username: string, lozinka: string): Promise<User | null>{
         return new Promise((resolve, reject )=> {
-            var sqlQuery = "SELECT * FROM user WHERE " + " username=? and password=?";
-            var queryVar = [username, password];
+            var sqlQuery = "SELECT * FROM rukovodioc WHERE " + " username=? and lozinka=?";
+            var queryVar = [username, lozinka];
             dbConnection.query(sqlQuery, queryVar, function(err, rows){
                 if(err) return reject(err);
                 else resolve(JSON.parse(JSON.stringify(rows))[0])  
@@ -20,20 +20,19 @@ class UserDAO{
     // pa u json objekte, i uzmem samo prvi jer ce sigurno biti samo jedan sa tim kor_imenom
 
 
-    //async register(user: User){
-     //   var sqlQuery = "INSERT INTO korisnici VALUES (?, ?, ?, ?)";
-      //  var queryVar = [user.kor_ime, user.lozinka, user.ime, user.prezime];
-      //  dbConnection.query(sqlQuery, queryVar, function(err, rows){})
-    //}
-    // saljemo podatke koje insertuje u Korisnici ,tu je SQL upit, tu su podaci
-    // i izvrsava query
+    async register(user: User){
+        var sqlQuery = "INSERT INTO rukovodioc (username, lozinka, ime, prezime, datumRodjenja, mailRukovodioca, telefon, pregledPodnetih, idInstitucije) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        var queryVar = [user.username, user.lozinka, user.ime, user.prezime, user.datumRodjenja, user.mailRukovodioca, user.telefon, user.pregledPodnetih, user.idInstitucije];
+        dbConnection.query(sqlQuery, queryVar, function(err, rows){})
+    }
+
 
     async getAllUsers(): Promise<User | null>{
         return new Promise((resolve, reject )=> {
-            var sqlQuery = "SELECT * FROM user";
+            var sqlQuery = "SELECT * FROM rukovodioc";
             dbConnection.query(sqlQuery, null, function(err, rows){
                 if(err) return reject(err);
-                 else resolve(JSON.parse(JSON.stringify(rows)))  
+                 else resolve(JSON.parse(JSON.stringify(rows))) 
             })
         })
     }
